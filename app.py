@@ -17,9 +17,7 @@ import cufflinks as cf
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
-import nltk
-nltk.download('vader')
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 constraints = ['#B34D22', '#EBE00C', '#1FEB0C', '#0C92EB', '#EB0CD5']
