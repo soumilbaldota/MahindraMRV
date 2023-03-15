@@ -32,6 +32,7 @@ class MSpider(scrapy.Spider):
 
     def updatejson(self, y):
         if not os.path.isdir(r"./data/cardekho"):
+            os.mkdir('data')
             os.mkdir('data/cardekho')
         with open(f"data/cardekho/{y}.json", "w") as out:
             json.dump(d[y], out)
