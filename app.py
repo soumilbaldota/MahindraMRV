@@ -18,9 +18,11 @@ import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
+import subprocess
 
 constraints = ['#B34D22', '#EBE00C', '#1FEB0C', '#0C92EB', '#EB0CD5']
+
+print("hello world")
 def categorical_variable_summary(df, column_name):
   fig = make_subplots(rows = 1, cols = 2, 
                       subplot_titles = ('Countplot', 'Percentage'),
@@ -55,8 +57,11 @@ def categorical_variable_summary(df, column_name):
 
 def analyser(car = 'a', dataset = 'a'):
 
-	print(os.path.join(dataset, f"{car}.json"))
-	a = rf"./{dataset}/{car}.json"
+	a = rf"./data/{dataset}/{car}.json"
+
+	if(not os.path.exists(a)):
+		a = rf"./{dataset}/{car}.json"
+
 	f = open(a)
 	data = json.load(f)
 	l = []
@@ -111,7 +116,8 @@ def main():
 							"carwale"
 						]
 						)
-
+	if(st.button('scrape(cardekho)')):
+		subprocess.run(['python', 'cardekho_scraper.py'])
 	if(st.button('analyse')):
 		plots = analyser(dataset = dataset,car = car)
 		st.plotly_chart(plots[0], 
@@ -120,4 +126,4 @@ def main():
 			use_container_width=True)
 		# analyser()
 if __name__ == '__main__':
-    main()
+	main()
