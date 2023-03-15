@@ -1,6 +1,7 @@
 import scrapy
 import json
 from scrapy.crawler import CrawlerProcess
+import os
 hello  = [("thar", 14),("scorpio", 47),("xuv700", 16),
 ("scorpio-classic", 3), ("xuv300", 74), ("bolero",6),
 ("bolero-neo", 3), ("xuv400-ev", 3),
@@ -30,6 +31,8 @@ class MSpider(scrapy.Spider):
         self.updatejson(k)
 
     def updatejson(self, y):
+        if not os.path.isdir(r"./data/cardekho"):
+            os.mkdir('data/cardekho')
         with open(f"data/cardekho/{y}.json", "w") as out:
             json.dump(d[y], out)
             out.close()
