@@ -19,7 +19,7 @@ from plotly.subplots import make_subplots
 import plotly.io as pio
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import subprocess
-
+import sys
 constraints = ['#B34D22', '#EBE00C', '#1FEB0C', '#0C92EB', '#EB0CD5']
 
 print("hello world")
@@ -117,7 +117,7 @@ def main():
 						]
 						)
 	if(st.button('scrape(cardekho)')):
-		subprocess.run(['python', 'cardekho_scraper.py'])
+		subprocess.run([f'{sys.executable}', 'cardekho_scraper.py'])
 	if(st.button('analyse')):
 		plots = analyser(dataset = dataset,car = car)
 		st.plotly_chart(plots[0], 
