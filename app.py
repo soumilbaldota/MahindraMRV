@@ -81,7 +81,7 @@ def analyser(car = 'a', dataset = 'a'):
 	df[['polarity', 'subjectivity']] = df['reviews'].apply(lambda Text:pd.Series(TextBlob(Text).sentiment))
 	#polarity sends the mood and ranges between 0 and 1 - more towards 1, it is positive and towards 0, it is negative
 
-	for index, row in df['reviews'].iteritems():
+	for index, row in df['reviews'].items():
 	  score = sent_analyzer.polarity_scores(row)
 
 	  neg = score['neg']
